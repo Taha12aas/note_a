@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note/widgets/Note_Item.dart';
 import 'package:note/widgets/custom_app_bar.dart';
 
 class NotesView extends StatelessWidget {
@@ -8,6 +9,7 @@ class NotesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(),
+      body: NoteItem(),
     );
   }
 }
