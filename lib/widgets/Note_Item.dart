@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -7,11 +8,11 @@ class NoteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.only(top: 18, bottom: 18, left: 18),
+            padding: const EdgeInsets.only(top: 18, bottom: 18, left: 18),
             decoration: BoxDecoration(
               color: Colors.orange,
               borderRadius: BorderRadius.circular(16),
@@ -20,7 +21,7 @@ class NoteItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 ListTile(
-                    title: Text(
+                    title: const Text(
                       "Flutter Tips",
                       style: TextStyle(fontSize: 26, color: Colors.black),
                     ),
@@ -34,7 +35,7 @@ class NoteItem extends StatelessWidget {
                     ),
                     trailing: IconButton(
                       onPressed: () {},
-                      icon: Icon(
+                      icon: const Icon(
                         FontAwesomeIcons.trash,
                         color: Colors.black,
                       ),
