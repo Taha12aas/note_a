@@ -3,20 +3,18 @@ import 'package:note/constants.dart';
 
 // ignore: must_be_immutable
 class CustomTextField extends StatelessWidget {
-  CustomTextField({
+  const CustomTextField({
     super.key,
-    this.height,
     required this.hintText,
+    this.maxLine = 1,
   });
   final String hintText;
-  double? height;
+  final int maxLine;
   @override
   Widget build(BuildContext context) {
     return TextField(
+      maxLines: maxLine,
       cursorColor: kPrimaryColor,
-      strutStyle: StrutStyle(
-        height: height,
-      ),
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: const TextStyle(color: kPrimaryColor),
