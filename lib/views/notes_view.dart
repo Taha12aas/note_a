@@ -10,8 +10,7 @@ class NotesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButton: const CustomFloatingActionButtun(),
-        appBar: customAppBar(),
+        appBar: customAppBar(Icons.search, 'Note'),
         body: const NoteListView());
   }
 }
-

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:note/widgets/custom_search_icon.dart';
 
-
-
-AppBar customAppBar() {
-    return AppBar(
-      title: const Text(
-        'Notes',
-        style: TextStyle(fontSize: 28),
-      ),
-      actions: const [CustomSearchIcon()],
-    );
-  }
+AppBar customAppBar(IconData icon,String title) {
+  
+  return AppBar(
+    title:  Text(
+      title,
+      style: const TextStyle(fontSize: 28),
+    ),
+    actions:  [
+      CustomSearchIcon(
+        icon: icon,
+      )
+    ],
+  );
+}
