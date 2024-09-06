@@ -10,14 +10,13 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: const ButtonStyle(
+            padding: MaterialStatePropertyAll(EdgeInsets.all(15)),
             backgroundColor: MaterialStatePropertyAll(kPrimaryColor)),
         onPressed: () {},
         child: const Text(
           'Add',
           style: TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-              fontWeight: FontWeight.bold),
+              color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
         ));
   }
 }

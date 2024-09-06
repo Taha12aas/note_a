@@ -29,10 +29,9 @@ class AddNoteBottomSheet extends StatelessWidget {
         ),
       ),
       Padding(
-        padding: EdgeInsets.symmetric(horizontal: 14),
+        padding: EdgeInsets.only(top: 100, right: 14, left: 14, bottom: 5),
         child: CustomButton(),
       )
     ]);
   }
 }
-
