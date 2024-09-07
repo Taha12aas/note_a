@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note/cubits/add%20note%20cubit/add_note_cubit_cubit.dart';
 import 'package:note/widgets/custom_button.dart';
 import 'package:note/widgets/custom_text_field.dart';
 
@@ -56,6 +57,7 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
             onPres: () {
               if (globalKey.currentState!.validate()) {
                 globalKey.currentState!.save();
+                
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});
