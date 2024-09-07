@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:note/cubits/add%20note%20cubit/add_note_cubit_cubit.dart';
+import 'package:note/models/note_model.dart';
 import 'package:note/widgets/custom_button.dart';
 import 'package:note/widgets/custom_text_field.dart';
 
@@ -20,14 +21,16 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AddNoteCubitCubit, AddNoteCubitState>(
-      builder: (context, state) {
+    return BlocConsumer<AddNoteCubitCubit, AddNoteCubitState>(
+      listener: (context, state) {
         if (state is AddNoteFaliure) {
           print('object');
         }
         if (state is AddNoteSuccess) {
           Navigator.pop(context);
         }
+      },
+      builder: (context, state) {
         return ModalProgressHUD(
           inAsyncCall: state is AddNoteLoading ? true : false,
           child: Form(
@@ -69,6 +72,12 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
                   onPres: () {
                     if (globalKey.currentState!.validate()) {
                       globalKey.currentState!.save();
+                      BlocProvider.of<AddNoteCubitCubit>(context).addNote(
+                          NoteModel(
+                              title: title,
+                              content: supTitle,
+                              date: DateTime.now().toString(),
+                              color: Colors.white.value));
                     } else {
                       autovalidateMode = AutovalidateMode.always;
                       setState(() {});
