@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note/constants.dart';
-
+@immutable
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
