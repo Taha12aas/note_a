@@ -21,74 +21,77 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddNoteCubitCubit, AddNoteCubitState>(
-      listener: (context, state) {
-        if (state is AddNoteFaliure) {
-          print('object');
-        }
-        if (state is AddNoteSuccess) {
-          Navigator.pop(context);
-        }
-      },
-      builder: (context, state) {
-        return ModalProgressHUD(
-          inAsyncCall: state is AddNoteLoading ? true : false,
-          child: Form(
-            key: globalKey,
-            autovalidateMode: autovalidateMode,
-            child: ListView(children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 20,
-                  bottom: 30,
-                  left: 15,
-                  right: 15,
+    return BlocProvider(
+      create: (context) => AddNoteCubitCubit(),
+      child: BlocConsumer<AddNoteCubitCubit, AddNoteCubitState>(
+        listener: (context, state) {
+          if (state is AddNoteFaliure) {
+            print('object');
+          }
+          if (state is AddNoteSuccess) {
+            Navigator.pop(context);
+          }
+        },
+        builder: (context, state) {
+          return ModalProgressHUD(
+            inAsyncCall: state is AddNoteLoading ? true : false,
+            child: Form(
+              key: globalKey,
+              autovalidateMode: autovalidateMode,
+              child: ListView(children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 20,
+                    bottom: 30,
+                    left: 15,
+                    right: 15,
+                  ),
+                  child: CustomTextField(
+                    hintText: 'Title',
+                    onsaved: (p0) {
+                      title = p0!;
+                    },
+                  ),
                 ),
-                child: CustomTextField(
-                  hintText: 'Title',
-                  onsaved: (p0) {
-                    title = p0!;
-                  },
+                Padding(
+                  padding: const EdgeInsets.only(
+                    bottom: 30,
+                    left: 15,
+                    right: 15,
+                  ),
+                  child: CustomTextField(
+                    onsaved: (p0) {
+                      supTitle = p0!;
+                    },
+                    hintText: 'Content',
+                    maxLine: 5,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  bottom: 30,
-                  left: 15,
-                  right: 15,
-                ),
-                child: CustomTextField(
-                  onsaved: (p0) {
-                    supTitle = p0!;
-                  },
-                  hintText: 'Content',
-                  maxLine: 5,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    top: 75, right: 14, left: 14, bottom: 5),
-                child: CustomButton(
-                  onPres: () {
-                    if (globalKey.currentState!.validate()) {
-                      globalKey.currentState!.save();
-                      BlocProvider.of<AddNoteCubitCubit>(context).addNote(
-                          NoteModel(
-                              title: title,
-                              content: supTitle,
-                              date: DateTime.now().toString(),
-                              color: Colors.white.value));
-                    } else {
-                      autovalidateMode = AutovalidateMode.always;
-                      setState(() {});
-                    }
-                  },
-                ),
-              )
-            ]),
-          ),
-        );
-      },
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 75, right: 14, left: 14, bottom: 5),
+                  child: CustomButton(
+                    onPres: () {
+                      if (globalKey.currentState!.validate()) {
+                        globalKey.currentState!.save();
+                        BlocProvider.of<AddNoteCubitCubit>(context).addNote(
+                            NoteModel(
+                                title: title,
+                                content: supTitle,
+                                date: DateTime.now().toString(),
+                                color: Colors.white.value));
+                      } else {
+                        autovalidateMode = AutovalidateMode.always;
+                        setState(() {});
+                      }
+                    },
+                  ),
+                )
+              ]),
+            ),
+          );
+        },
+      ),
     );
   }
 }
