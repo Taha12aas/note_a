@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note/constants.dart';
+
 @immutable
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -17,19 +18,20 @@ class CustomTextField extends StatelessWidget {
       onSaved: onsaved,
       validator: (value) {
         if (value!.isEmpty) {
-           return 'Field required';
+          return 'Field required';
         } else {
-         return null;
+          return null;
         }
       },
       maxLines: maxLine,
       cursorColor: kPrimaryColor,
       decoration: InputDecoration(
-          hintText: hintText,
-          hintStyle: const TextStyle(color: kPrimaryColor),
-          focusedBorder: buildBorder(kPrimaryColor),
-          enabledBorder: buildBorder(Colors.white),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
+        hintText: hintText,
+        hintStyle: const TextStyle(color: kPrimaryColor),
+        focusedBorder: buildBorder(kPrimaryColor),
+        enabledBorder: buildBorder(Colors.white),
+        errorBorder: buildBorder(Colors.red),
+      ),
     );
   }
 

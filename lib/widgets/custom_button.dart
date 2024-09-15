@@ -13,7 +13,8 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: const ButtonStyle(
-          padding: MaterialStatePropertyAll(EdgeInsets.all(15)),
+          padding: MaterialStatePropertyAll(
+              EdgeInsets.symmetric(horizontal: 170, vertical: 10)),
           backgroundColor: MaterialStatePropertyAll(kPrimaryColor)),
       onPressed: onPres,
       child: isloidig == true

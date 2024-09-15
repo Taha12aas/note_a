@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:note/models/note_model.dart';
 import 'package:note/views/edit_note_view.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
-
+  const NoteItem({super.key, required this.note});
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -22,21 +23,21 @@ class NoteItem extends StatelessWidget {
             Container(
               padding: const EdgeInsets.only(top: 18, bottom: 18, left: 18),
               decoration: BoxDecoration(
-                color: Colors.orange,
+                color: Color(note.color),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   ListTile(
-                      title: const Text(
-                        "Flutter Tips",
-                        style: TextStyle(fontSize: 26, color: Colors.black),
+                      title:  Text(
+                        note.title,
+                        style: const TextStyle(fontSize: 26, color: Colors.black),
                       ),
                       subtitle: Padding(
                         padding: const EdgeInsets.only(bottom: 8, top: 16),
                         child: Text(
-                          "build a carer with The king taha alfakhoury  😁 ",
+                          note.content,
                           style: TextStyle(
                               fontSize: 20,
                               color: Colors.black.withOpacity(0.5)),
@@ -52,7 +53,7 @@ class NoteItem extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 32),
                     child: Text(
-                      "may 12 2020",
+                      note.date,
                       style: TextStyle(
                           fontSize: 20, color: Colors.black.withOpacity(0.5)),
                     ),
