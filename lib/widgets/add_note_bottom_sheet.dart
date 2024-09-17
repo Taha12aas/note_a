@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note/cubits/add%20note%20cubit/add_note_cubit_cubit.dart';
 import 'package:note/cubits/cubit/notes_cubits_cubit.dart';
@@ -28,11 +27,12 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
         listener: (context, state) {
           if (state is AddNoteFaliure) {}
           if (state is AddNoteSuccess) {
+            BlocProvider.of<NotesCubitsCubit>(context).showNotes();
             Navigator.pop(context);
           }
         },
         builder: (context, state) {
-          return Padding(
+          return Padding( 
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
             child: AbsorbPointer(

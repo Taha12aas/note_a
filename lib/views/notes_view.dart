@@ -15,8 +15,8 @@ class NotesView extends StatefulWidget {
 
 class _NotesViewState extends State<NotesView> {
     @override
-  void initState() {
-    BlocProvider.of<NotesCubitsCubit>(context).showNotes();
+    void initState() {
+      BlocProvider.of<NotesCubitsCubit>(context).showNotes();
     super.initState();
   }
 

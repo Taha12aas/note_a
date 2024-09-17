@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note/cubits/cubit/notes_cubits_cubit.dart';
 import 'package:note/widgets/add_note_bottom_sheet.dart';
 
 class CustomFloatingActionButtun extends StatelessWidget {
