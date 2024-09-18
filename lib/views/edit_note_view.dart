@@ -4,6 +4,7 @@ import 'package:note/cubits/cubit/notes_cubits_cubit.dart';
 import 'package:note/models/note_model.dart';
 import 'package:note/widgets/custom_app_bar.dart';
 import 'package:note/widgets/custom_text_field.dart';
+import 'package:note/widgets/edit_list_color.dart';
 
 class EditNoteViwe extends StatefulWidget {
   const EditNoteViwe({super.key, required this.note});
@@ -19,7 +20,6 @@ class _EditNoteViweState extends State<EditNoteViwe> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(Icons.check, 'Edit Note', () {
-        
         widget.note.title = title ?? widget.note.title;
         widget.note.content = content ?? widget.note.content;
         widget.note.save();
@@ -29,7 +29,7 @@ class _EditNoteViweState extends State<EditNoteViwe> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
             child: CustomTextField(
               onChanged: (p0) {
                 title = p0;
@@ -38,14 +38,18 @@ class _EditNoteViweState extends State<EditNoteViwe> {
               initialValue: widget.note.title,
             ),
           ),
-          CustomTextField(
-            onChanged: (p0) {
-              content = p0;
-            },
-            initialValue: widget.note.content,
-            hintText: 'Content',
-            maxLine: 5,
-          )
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: CustomTextField(
+              onChanged: (p0) {
+                content = p0;
+              },
+              initialValue: widget.note.content,
+              hintText: 'Content',
+              maxLine: 5,
+            ),
+          ),
+          EditColor(note: widget.note)
         ],
       ),
     );
