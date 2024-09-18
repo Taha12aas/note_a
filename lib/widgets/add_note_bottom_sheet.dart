@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note/cubits/add%20note%20cubit/add_note_cubit_cubit.dart';
 import 'package:note/cubits/cubit/notes_cubits_cubit.dart';
 import 'package:note/models/note_model.dart';
+import 'package:note/widgets/colors_list.dart';
 import 'package:note/widgets/custom_button.dart';
 import 'package:note/widgets/custom_text_field.dart';
 
@@ -32,7 +33,7 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
           }
         },
         builder: (context, state) {
-          return Padding( 
+          return Padding(
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
             child: AbsorbPointer(
@@ -70,6 +71,7 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
                         maxLine: 5,
                       ),
                     ),
+                    const ColorsList(),
                     Padding(
                       padding: const EdgeInsets.only(
                           top: 75, right: 14, left: 14, bottom: 20),

@@ -24,7 +24,9 @@ class _NotesViewState extends State<NotesView> {
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButton: const CustomFloatingActionButtun(),
-        appBar: customAppBar(Icons.search, 'Note'),
+        appBar: customAppBar(Icons.search, 'Note',() {
+          
+        }),
         body: const NoteListView());
   }
 }
