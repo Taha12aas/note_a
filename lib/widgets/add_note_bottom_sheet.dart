@@ -46,7 +46,7 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
                     Padding(
                       padding: const EdgeInsets.only(
                         top: 20,
-                        bottom: 30,
+                        bottom: 20,
                         left: 15,
                         right: 15,
                       ),
@@ -74,7 +74,7 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
                     const ColorsList(),
                     Padding(
                       padding: const EdgeInsets.only(
-                          top: 75, right: 14, left: 14, bottom: 20),
+                          top: 25, right: 14, left: 14, bottom: 50),
                       child: BlocBuilder<AddNoteCubitCubit, AddNoteCubitState>(
                         builder: (context, state) {
                           return CustomButton(
